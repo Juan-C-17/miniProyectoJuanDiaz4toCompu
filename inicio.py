@@ -1,9 +1,56 @@
 from persona import persona
-misContactos = []
+misContactos = [persona(123,"Astrid", "Casa 1"), persona(321, "Anjely", "Casa 2")]
 
-def crearContacto():
-    print("Creando Contacto")
+def crearContacto(numero, nombre, direccion):
+    misContactos.append(persona(numero, nombre, direccion))
+    print("Contacto almacenado...")
 
+def buscarContacto(nombre):
+    if len(misContactos) == 0:
+        print("La Lista se encuentra vacía, No hay contactos en la lista ---------->")
+    else:
+        encontrado = False
+        for i in range(len(misContactos)):
+            if misContactos[i].verNombre() == nombre:
+                print("El teléfono es: ", misContactos[i].verNumero())
+                print("La Dirección es: ", misContactos[i].verDireccion())
+                encontrado = True
+                break
+            else:
+                encontrado = False
+        if encontrado == False:
+            print("El contacto no existe dentro de su lista ------>")
+
+def mostrarContactos():
+    if len(misContactos) == 0:
+        print("La Lista se encuentra vacía, No hay contactos en la lista ---------->")
+    else:
+        for i in range(len(misContactos)):
+            print("\nNombre: ",misContactos[i].verNombre(),"\nTeléfono: ",misContactos[i].verNumero(), "\nDirección: ",misContactos[i].verDireccion(),)
+
+def modificarContacto(nombre):
+    if len(misContactos) == 0:
+        print("La Lista se encuentra vacía, No hay contactos en la lista ---------->")
+    else:
+        encontrado = False
+        posicion = None
+        for i in range(len(misContactos)):
+            if misContactos[i].verNombre() == nombre:
+                posicion = i
+                encontrado = True
+                break
+            else:
+                encontrado = False
+        if encontrado:
+            nuevoNumero = int(input("Ingrese nuevo número: "))
+            nuevoNombre = input("Ingrese el nuevo Nombre: ")
+            nuevaDireccion = input("Ingrese la nueva Dirección: ")
+            misContactos[posicion].modificarNumero(nuevoNumero)
+            misContactos[posicion].modificarNombre(nuevoNombre)
+            misContactos[posicion].modificarDireccion(nuevaDireccion)
+            print("Contacto Actualizado Correctamente...")
+        else:
+            print("Contacto no encontrado...")
 
 def main():
     op = 0
@@ -22,6 +69,14 @@ def main():
             nombre = input("Ingrese el nombre del Contacto: ") 
             direccion = input("Ingrese la direccion: ")
             crearContacto(numero, nombre, direccion)
+        elif op == 2:
+            nombre = input("Ingrese el nombre del contacto que desea buscar: ")
+            buscarContacto(nombre)
+        elif op == 3:
+            mostrarContactos()
+        elif op == 4:
+            nombre = input("Ingrese el Nombre del contacto que desea modificar: ")
+            modificarContacto(nombre)
 
 #iniciar programa
 main()
