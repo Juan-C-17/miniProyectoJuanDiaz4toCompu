@@ -71,9 +71,34 @@ def eliminarContacto(nombre):
         else:
             print("Contacto no encontrado...")
 
-def crearReporte():
-    print("Creando Reporte HTML")
 
+
+def crearReporte():
+    documento = open("reporteContactos.html","w")
+    documento.write("<!doctype html>\n")
+    documento.write("<html>\n")
+    documento.write("<head>\n")
+    documento.write("\t<title> Agenda 2022 </title>\n")
+    documento.write("</head>\n")
+    documento.write("<body bgcolor ='#d4ffe3'>\n")
+    documento.write("\t<center>\n")
+    documento.write("\t<h1>Mis Contactos</h1>\n")
+    documento.write("<hr>")
+    documento.write('\t<table border ="2">\n')
+    documento.write("\t\t<tr>\n")
+    documento.write("\t\t\t<td>Número de teléfono</td><td>Nombre</td><td>Dirección</td>\n")
+    for i in range(len(misContactos)):
+        documento.write("\t\t<tr>\n")
+        documento.write("\t\t\t<td>" +misContactos[i].verNombre() +"</td><td>"+ str(misContactos[i].verNumero()) +"</td><td>" +misContactos[i].verDireccion() +"</td>")
+        documento.write("\t\t</tr>\n")
+
+    documento.write("\t\t</tr>\n")
+    documento.write("</table>\n")
+    documento.write("\t</center>\n")
+    documento.write("</body>\n")
+    documento.write("</html>")
+    documento.write("")
+    print("Reporte en html creado con éxito...")
 def main():
     op = 0
     while op != 7:
