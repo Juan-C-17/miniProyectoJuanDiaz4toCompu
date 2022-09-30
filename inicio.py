@@ -52,6 +52,28 @@ def modificarContacto(nombre):
         else:
             print("Contacto no encontrado...")
 
+def eliminarContacto(nombre):
+    if len(misContactos) == 0:
+        print("La Lista se encuentra vacía, No hay contactos en la lista ---------->")
+    else:
+        encontrado = False
+        posicion = None
+        for i in range(len(misContactos)):
+            if misContactos[i].verNombre() == nombre:
+                posicion = i
+                encontrado = True
+                break
+            else:
+                encontrado = False
+        if encontrado:
+            misContactos.pop(posicion)
+            print("Contacto Eliminado Correctamente...")
+        else:
+            print("Contacto no encontrado...")
+
+def crearReporte():
+    print("Creando Reporte HTML")
+
 def main():
     op = 0
     while op != 7:
@@ -77,6 +99,15 @@ def main():
         elif op == 4:
             nombre = input("Ingrese el Nombre del contacto que desea modificar: ")
             modificarContacto(nombre)
+        elif op == 5:
+            nombre = input("Ingrese el Nombre del contacto que desea Eliminar: ")
+            eliminarContacto(nombre)
+        elif op == 6:
+            crearReporte()
+        elif op == 7:
+            print("Progrma finalizado...")
+        else:
+            print("Opción inválida, por favor ingrese otra opción")
 
 #iniciar programa
 main()
