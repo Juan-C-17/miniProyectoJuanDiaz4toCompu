@@ -1,27 +1,26 @@
-import imp
 from persona import persona
 misContactos = []
 
-def  crearContacto():
-    print('CreandoContacto')
+def crearContacto():
+    print("Creando Contacto")
 
 
 def main():
     op = 0
     while op != 7:
-        print('===========>> Agenda 2022 <<===========')
-        print('1. Crear contacto')
-        print('2. Buscar contacto')
-        print('3. Ver Contactos ')
-        print('4. Modificar Contacto')  
-        print('5. Eliminar Contacto')
-        print('6. Crear reporte en HTML')
-        print('7. Salir del programa\n\n')
-        op = int(input('Ingrese una opcion: '))
+        print("\n----------> Agenda 2022 <-------------")
+        print("1. Crear Contacto")
+        print("2. Buscar Contacto")
+        print("3. Ver todos los Contactos")
+        print("4. Modificar Contacto")
+        print("5. Eliminar Contacto")
+        print("6. Crear reporte en HTML")
+        print("7. Finalizar el programa\n\n")
+        op = int(input("Ingrese el número de opción: "))
         if op == 1:
-            numero = int(input('Ingrese el numero de telefono'))
-            nombre = int(input('Ingrese el nombre del contacto'))
-            direccion = int(input('Ingrese la direccion del contacto'))
+            numero = int(input("Ingrese el numero de telefono: "))
+            nombre = input("Ingrese el nombre del Contacto: ") 
+            direccion = input("Ingrese la direccion: ")
             crearContacto(numero, nombre, direccion)
 
 #iniciar programa
